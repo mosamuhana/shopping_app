@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "394985553436",
+    "firebase_url": "https://my-shopping-app-2020.firebaseio.com",
+    "project_id": "my-shopping-app-2020",
+    "storage_bucket": "my-shopping-app-2020.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394985553436:android:1563c5632cb055cf0129d9",
+        "android_client_info": {
+          "package_name": "com.mytec.shopping_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "394985553436-a6s8bu3m7pt330p27jn10atfrtmu51nk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mytec.shopping_app",
+            "certificate_hash": "450f8a6e78fb682f8ac79d2fe135d96f192b27a7"
+          }
+        },
+        {
+          "client_id": "394985553436-8ij4i8uqcvo96fn0gt8llq465r8r5125.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGTyTikSyFWzUsvbGakT0KDmDEOeJK_KQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "394985553436-8ij4i8uqcvo96fn0gt8llq465r8r5125.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
