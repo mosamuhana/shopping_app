@@ -24,8 +24,8 @@ class Product {
   double _price;
   bool _sale;
   bool _featured;
-  List _colors;
-  List _sizes;
+  List<String> _colors;
+  List<String> _sizes;
 
   String get id => _id;
   String get name => _name;
@@ -37,8 +37,8 @@ class Product {
   double get price => _price;
   bool get featured => _featured;
   bool get sale => _sale;
-  List get colors => _colors;
-  List get sizes => _sizes;
+  List<String> get colors => _colors ?? [];
+  List<String> get sizes => _sizes ?? [];
 
   String get priceAsString => _price == null ? '' : _price.toStringAsFixed(2);
 
