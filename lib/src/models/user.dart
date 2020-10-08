@@ -13,21 +13,23 @@ class UserModel {
   String _name;
   String _email;
   String _stripeId;
+  double _totalPrice = 0;
+  List<CartItem> _cartItems = [];
 
   String get id => _id;
   String get name => _name;
   String get email => _email;
   String get stripeId => _stripeId;
-
-  List<CartItem> cart;
-  int totalCartPrice;
+  double get totalPrice => _totalPrice ?? 0;
+  String get totalPriceAsString => totalPrice == 0 ? '0' : totalPrice.toStringAsFixed(2);
+  List<CartItem> get cartItems => _cartItems;
 
   UserModel.fromDoc(DocumentSnapshot snapshot) {
     _id = snapshot.id;
     _name = snapshot[NAME];
     _email = snapshot[EMAIL];
     _stripeId = snapshot[STRIPE_ID] ?? "";
-    cart = CartItem.fromList(snapshot[CART] ?? []);
-    totalCartPrice = cart.map((x) => x.price).fold(0, (x, y) => x + y);
+    _cartItems = CartItem.fromList(snapshot[CART] ?? []);
+    _totalPrice = _cartItems.map((x) => x.price).fold(0, (x, y) => x + y);
   }
 }

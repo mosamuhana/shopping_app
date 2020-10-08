@@ -13,21 +13,16 @@ class CartItem {
   String _productId;
   String _size;
   String _color;
-  int _price;
+  double _price = 0;
 
   String get id => _id;
-
   String get name => _name;
-
   String get image => _image;
-
   String get productId => _productId;
-
   String get size => _size;
-
   String get color => _color;
-
-  int get price => _price;
+  double get price => _price ?? 0;
+  String get priceAsString => price == 0 ? '0' : price.toStringAsFixed(2);
 
   CartItem.fromMap(Map<String, dynamic> data) {
     _id = data[ID];

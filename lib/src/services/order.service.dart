@@ -14,7 +14,7 @@ class OrderService {
     String description,
     String status,
     List<CartItem> cart,
-    int totalPrice,
+    double totalPrice,
   }) async {
     await collection.doc(id).set({
       "userId": userId,

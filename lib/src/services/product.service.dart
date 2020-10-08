@@ -13,8 +13,8 @@ class ProductService {
     return _getList(result);
   }
 
-  Future<List<Product>> search({String productName}) async {
-    final searchKey = productName[0].toUpperCase() + productName.substring(1);
+  Future<List<Product>> search(String term) async {
+    final searchKey = term[0].toUpperCase() + term.substring(1);
     final q = collection.orderBy("name").startAt([searchKey]).endAt([searchKey + '\uf8ff']);
     final result = await q.get();
     return _getList(result);

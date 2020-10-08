@@ -23,6 +23,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   final _key = GlobalKey<ScaffoldState>();
   String _color = "";
   String _size = "";
+  bool _busy = false;
+
+  set busy(bool value) {
+    if (_busy != value) {
+      setState(() => _busy = value);
+    }
+  }
 
   @override
   void initState() {
@@ -34,7 +41,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<AuthProvider>(context);
-    final appProvider = Provider.of<AppProvider>(context);
 
     return Scaffold(
       key: _key,
@@ -272,22 +278,22 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           elevation: 0.0,
                           child: MaterialButton(
                             onPressed: () async {
-                              appProvider.changeIsLoading();
+                              busy = true;
                               bool success =
                                   await userProvider.addToCart(product: widget.product, color: _color, size: _size);
                               if (success) {
                                 _key.currentState.showSnackBar(SnackBar(content: Text("Added to Cart!")));
                                 userProvider.reloadUserModel();
-                                appProvider.changeIsLoading();
+                                busy = false;
                                 return;
                               } else {
                                 _key.currentState.showSnackBar(SnackBar(content: Text("Not added to Cart!")));
-                                appProvider.changeIsLoading();
+                                busy = false;
                                 return;
                               }
                             },
                             minWidth: MediaQuery.of(context).size.width,
-                            child: appProvider.isLoading
+                            child: _busy
                                 ? Loading()
                                 : Text(
                                     "Add to cart",

@@ -25,15 +25,6 @@ class AuthProvider with ChangeNotifier {
 
   AuthProvider();
 
-  /*
-  UserProvider.initialize() : _auth = FirebaseAuth.instance {
-    //_auth.userChanges().listen(_onStateChanged);
-    _sub = _auth.authStateChanges().listen((user) {
-      _onStateChanged(user);
-    });
-  }
-  */
-
   void init() {
     if (_initialized) return;
     _initialized = true;
@@ -102,7 +93,7 @@ class AuthProvider with ChangeNotifier {
     try {
       String cartItemId = Uuid().v4();
 
-      List<CartItem> cart = _userModel.cart;
+      List<CartItem> cart = _userModel.cartItems;
 
       CartItem item = CartItem.fromMap({
         "id": cartItemId,

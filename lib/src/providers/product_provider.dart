@@ -4,31 +4,28 @@ import '../models.dart';
 import '../services.dart';
 
 class ProductProvider with ChangeNotifier {
-  List<Product> products = [];
-  List<Product> productsSearched = [];
+  List<Product> _products = [];
+  List<Product> _productsSearched = [];
   bool _initialized = false;
 
-  ProductProvider();
+  List<Product> get products => _products;
+  List<Product> get productsSearched => _productsSearched;
 
-  /*
-  ProductProvider.initialize() {
-    load();
-  }
-  */
+  ProductProvider();
 
   void init() {
     if (_initialized) return;
     load();
   }
 
-  load() async {
-    products = await ProductService.instance.getAll();
+  Future<void> load() async {
+    _products = await ProductService.instance.getAll();
     _initialized = true;
     notifyListeners();
   }
 
-  Future search({String productName}) async {
-    productsSearched = await ProductService.instance.search(productName: productName);
+  Future<void> search(String term) async {
+    _productsSearched = await ProductService.instance.search(term);
     notifyListeners();
   }
 }

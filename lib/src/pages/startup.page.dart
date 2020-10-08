@@ -13,7 +13,7 @@ class StartupPage extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasError) {
-            return ErrorPage();
+            return ErrorPage(message: snapshot.error.toString());
           }
           return _startup(context);
         }

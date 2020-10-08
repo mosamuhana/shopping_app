@@ -12,7 +12,6 @@ Future<void> main() async {
     providers: [
       ChangeNotifierProvider.value(value: AuthProvider()),
       ChangeNotifierProvider.value(value: ProductProvider()),
-      ChangeNotifierProvider.value(value: AppProvider()),
     ],
     child: MyApp(),
   ));
